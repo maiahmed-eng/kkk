@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أغلى الناس ❤️</title>
+    <style>
+        body { margin: 0; background: #000; color: white; font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; text-align: center; }
+        #pass-screen { position: fixed; inset: 0; background: #000; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        input { padding: 10px; border-radius: 5px; border: none; margin-top: 15px; text-align: center; }
+        #main { display: none; background: linear-gradient(to bottom, #004d40, #002b24); width: 100%; height: 100%; padding-top: 50px; }
+        .heart { font-size: 80px; color: red; cursor: pointer; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.2);} 100% {transform: scale(1);} }
+        #poem { white-space: pre-line; color: #ffd700; font-size: 1.4rem; margin: 20px; }
+        #no-btn { position: absolute; transition: 0.1s; padding: 10px 20px; cursor: pointer; }
+        #yes-btn { padding: 10px 30px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .game { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); flex-direction: column; justify-content: center; align-items: center; z-index: 20; }
+    </style>
+</head>
+<body>
+
+<div id="pass-screen">
+    <h2>أدخل التاريخ السري (28-11-2008)</h2>
+    <input type="text" id="pw" placeholder="DD-MM-YYYY">
+    <button style="margin-top:10px; padding:10px;" onclick="login()">دخول</button>
+</div>
+
+<div id="main">
+    <div class="heart" onclick="showPoem()">❤️</div>
+    <p>المس قلبي يا عموري</p>
+    <div id="poem"></div>
+    <button style="margin-top:20px; padding:10px; border:1px solid gold; background:none; color:white; cursor:pointer;" onclick="showGame()">سؤال مهم..</button>
+</div>
+
+<div id="game" class="game">
+    <h2 style="margin-bottom:50px;">هتفضل معايا يا عمر؟ 🥺</h2>
+    <button id="yes-btn" onclick="win()">أكيد طبعاً!</button>
+    <button id="no-btn" onmouseover="moveNo()">لأ</button>
+</div>
+
+<script>
+    function login() {
+        if(document.getElementById('pw').value === '28-11-2008') {
+            document.getElementById('pass-screen').style.display = 'none';
+            document.getElementById('main').style.display = 'block';
+        } else { alert('غلط يا موري!'); }
+    }
+    function showPoem() {
+        const t = "لو مال قلبي عن هواك نزعتهُ..\nوشريتُ قلباً في هواك يذوبُ..";
+        document.getElementById('poem').innerText = t;
+    }
+    function showGame() { document.getElementById('game').style.display = 'flex'; }
+    function moveNo() {
+        const b = document.getElementById('no-btn');
+        b.style.left = Math.random() * 80 + 'vw';
+        b.style.top = Math.random() * 80 + 'vh';
+    }
+    function win() { alert('كنت عارفة! بحبك يا موري ❤️'); document.getElementById('game').style.display = 'none'; }
+</script>
+</body>
+</html>
